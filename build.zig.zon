@@ -1,0 +1,15 @@
+.{
+    .name = "zdb",
+    .version = "0.0.0",
+    .dependencies = .{
+        .libzdb = .{
+            .path = "include",
+        },
+    },
+    .paths = .{
+        "",
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}
