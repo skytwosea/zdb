@@ -4,16 +4,24 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
+
+    // DEPENDENCIES
+    // ------------
+    const libzdb_dependency = b.dependency("libzdb", .{
+        .target = target,
+        .optimize = optimize,
+    });
+    const libzdb_module = libzdb_dependency.module("libzdb");
+
     // EXECUTABLE
     // ----------
-    const libzdb_dependency = b.dependency("libzdb", .{});
     const elf = b.addExecutable(.{
         .name = "zdb",
         .root_source_file = b.path("src/main.zig"),
         .target = target,
         .optimize = optimize,
     });
-    elf.root_module.addImport("libzdb", libzdb_dependency.module("libzdb"));
+    elf.root_module.addImport("libzdb", libzdb_module);
     b.installArtifact(elf);
     const run_cmd = b.addRunArtifact(elf);
     run_cmd.step.dependOn(b.getInstallStep());
@@ -22,6 +30,7 @@ pub fn build(b: *std.Build) void {
     }
     const run_step = b.step("run", "Run the app");
     run_step.dependOn(&run_cmd.step);
+
 
     // TESTING
     // -------
