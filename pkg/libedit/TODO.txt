@@ -1,0 +1,7 @@
+libedit functions:
+p31/32: #include <editline/readline.h>  ...  fns readline, add_history, history_length, history_list, 
+
+libedit package:
+replace current dependency in build.zig.zon with the debian/ubuntu one?
+
+PkgConfig: I've seen this in others' Zig builds, can it be used for the configure step for libedit as well?

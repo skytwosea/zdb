@@ -5,7 +5,7 @@ const testing = std.testing;
 const sdb = @This();
 
 pub fn say_hello() !void {
-    try stdout.print("Hello zdb\n", .{});
+    try stdout.print("Hello zdb!\n", .{});
     return;
 }
 
