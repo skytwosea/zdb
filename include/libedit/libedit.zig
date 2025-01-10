@@ -6,7 +6,6 @@
 //       int add_history(const char *)
 //   history_length: at readline.h line 138
 //       extern int history_base, history_length;
-//   
 //   history_list: at readline.h line 195
 //       HIST_ENTRY **history_list(void);
 //

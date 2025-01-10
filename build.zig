@@ -15,11 +15,12 @@ pub fn build(b: *std.Build) void {
 
     const libedit = b.addStaticLibrary(.{
         .name = "libedit",
-        .root_source_file = b.path("pkg/libedit/libedit.zig"),
+        .root_source_file = b.path("include/libedit/libedit.zig"),
         .target = target,
         .optimize = optimize,
     });
-    b.installArtifact(libedit);
+    _ = libedit;
+    // b.installArtifact(libedit);  // don't need to create a library file
 
 
     // EXECUTABLE
@@ -56,13 +57,13 @@ pub fn build(b: *std.Build) void {
     });
     const libzdb_unit_tests = b.addTest(.{
         .name = "libzdb unit tests",
-        .root_source_file = b.path("include/libzdb.zig"),
+        .root_source_file = b.path("lib/libzdb.zig"),
         .target = target,
         .optimize = optimize,
     });
     const libedit_unit_tests = b.addTest(.{
         .name = "libedit tests",
-        .root_source_file = b.path("pkg/libedit/libedit.zig"),
+        .root_source_file = b.path("include/libedit/libedit.zig"),
         .target = target,
         .optimize = optimize,
     });

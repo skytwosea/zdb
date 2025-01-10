@@ -4,7 +4,7 @@
     .dependencies = .{
         // Zig libs
         .libzdb = .{
-            .path = "include",
+            .path = "lib",
         },
     },
     .paths = .{
